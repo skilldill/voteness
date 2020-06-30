@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "vote_types",
+  "info": {
+    "name": "voteType"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "votes": {
+      "collection": "vote",
+      "via": "vote_type"
+    }
+  }
+}

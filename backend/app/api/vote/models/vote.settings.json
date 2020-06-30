@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "votes",
+  "info": {
+    "name": "vote"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "anonymous": {
+      "type": "boolean"
+    },
+    "variants": {
+      "type": "json"
+    },
+    "vote_type": {
+      "via": "votes",
+      "model": "vote-type"
+    }
+  }
+}

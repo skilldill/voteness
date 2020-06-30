@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/vote-types",
+      "handler": "vote-type.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/vote-types/count",
+      "handler": "vote-type.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/vote-types/:id",
+      "handler": "vote-type.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/vote-types",
+      "handler": "vote-type.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/vote-types/:id",
+      "handler": "vote-type.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/vote-types/:id",
+      "handler": "vote-type.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
