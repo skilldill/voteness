@@ -28,5 +28,27 @@ module.exports = {
         })
 
         return votes;
+    },
+
+    update: async (ctx) => {
+        const { id } = ctx.params;
+        const { body } = ctx.request;
+
+        try {
+            const foundVote = await strapi.query('vote').findOne({ id });
+    
+            foundVote.variants.map((variant) => {
+                if (variant.name === body.variant) {
+                    if (!variant['voters_ids'].includes(body.uid)) {
+                        variant['voters_ids'].push(body.uid);
+                    }
+                }
+            })
+
+            await strapi.services.vote.update({ id }, foundVote);
+            return { status: 'success' };
+        } catch (error) {
+            return { status: 'error', details: { ...error } };
+        }
     }
 };
