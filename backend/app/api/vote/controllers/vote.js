@@ -17,6 +17,22 @@ module.exports = {
                 id: vote['vote_type'].id
             }
 
+            if (anonymous) {
+                const prepareVariants = variants.map((variant) => ({
+                    name: variant.name,
+                    count: variant['voters_ids'].length
+                }))
+
+                return {
+                    id,
+                    name, 
+                    description,
+                    variants: prepareVariants,
+                    anonymous,
+                    type
+                }
+            }
+
             return {
                 id,
                 name, 
