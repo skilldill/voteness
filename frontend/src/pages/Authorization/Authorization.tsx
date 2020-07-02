@@ -1,19 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch } from "react-redux";
+import { Anchor, Tabs } from "antd";
 
 import { userActions } from "store/userState/userState.actions";
+import { LoginForm, SigninForm } from "./forms";
 
 import "./style.scss";
 
 export const Authorization = () => {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(userActions.fetchUser('skilldill.dev@yandex.ru', '7543221'));
-    }, [])
-
     return (
         <div className="authorization">
-            <h1>Start Page</h1>
+            <Tabs defaultActiveKey="1" tabPosition="top">
+                <Tabs.TabPane tab="Login" key="1">
+                    <LoginForm />
+                </Tabs.TabPane>
+                <Tabs.TabPane tab="Signin" key="2">
+                    <SigninForm />
+                </Tabs.TabPane>
+            </Tabs>
         </div>
     )
 }
