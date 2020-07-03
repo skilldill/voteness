@@ -1,5 +1,5 @@
 import React, { useCallback, useState, memo } from "react";
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, message } from "antd";
 import { UserOutlined, KeyOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 
@@ -29,7 +29,7 @@ export const LoginForm = memo(() => {
                 // REDIRECT
                 history.push(ROUTER_URLS.lenta);
             } catch (error) {
-                console.log(error.message);
+                message.error('Ошибка при авторизации');
             } finally {
                 setLoad(false);
             }

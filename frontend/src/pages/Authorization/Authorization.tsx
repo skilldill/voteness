@@ -19,6 +19,8 @@ export const Authorization = () => {
         }
     }
 
+    // TODO: FIX PERFORM
+
     return (
         <div className="authorization">
             {form}
