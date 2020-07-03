@@ -3,7 +3,7 @@ import { HashRouter as Router, Route, Switch, Redirect } from "react-router-dom"
 import { useDispatch } from "react-redux";
 
 import { routes } from "./routes";
-import { ROUTER_URLS } from "shared/constants";
+import { ROUTER_URLS, LOCAL_STORAGE_KEYS } from "shared/constants";
 import { FullScreenLoading } from "shared/components";
 import { RootContainer } from "core/components";
 
@@ -13,10 +13,10 @@ export const RouterRoullet = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
-        const userId = localStorage.getItem('userId');
+        const jwt = localStorage.getItem(LOCAL_STORAGE_KEYS.jwt);
+        const uid = localStorage.getItem(LOCAL_STORAGE_KEYS.uid);
 
-        if (!!token && !!userId) {
+        if (!!jwt && !!uid) {
 
         } else {
             setGoAuth(true);

@@ -1,23 +1,30 @@
-import React, { useEffect, useState, useCallback } from "react";
-import { useDispatch } from "react-redux";
-import { Anchor, Tabs } from "antd";
+import React, { useState } from "react";
+import { Button } from "antd";
 
-import { userActions } from "store/userState/userState.actions";
 import { LoginForm, SigninForm } from "./forms";
 
 import "./style.scss";
 
 export const Authorization = () => {
+    const [form, setForm] = useState(<LoginForm />);
+    const [toggleBtnText, setToggleBtnText] = useState('Регистрация');
+
+    const handleToggleForm = () => {
+        if (toggleBtnText === 'Регистрация') {
+            setToggleBtnText('Вход');
+            setForm(<SigninForm />);
+        } else {
+            setToggleBtnText('Регистрация');
+            setForm(<LoginForm />);
+        }
+    }
+
     return (
         <div className="authorization">
-            <Tabs defaultActiveKey="1" tabPosition="top">
-                <Tabs.TabPane tab="Login" key="1">
-                    <LoginForm />
-                </Tabs.TabPane>
-                <Tabs.TabPane tab="Signin" key="2">
-                    <SigninForm />
-                </Tabs.TabPane>
-            </Tabs>
+            {form}
+            <Button type="link" onClick={handleToggleForm} block>
+                {toggleBtnText}
+            </Button>
         </div>
     )
 }

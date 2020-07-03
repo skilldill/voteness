@@ -3,9 +3,13 @@ export const API_URLS = {
     auth: '/auth/local'
 }
 
-console.log(API_URLS.base);
-
 export const ROUTER_URLS = {
     base: '/',
-    auth: '/auth'
+    auth: '/auth',
+    lenta: '/lenta'
+}
+
+export const LOCAL_STORAGE_KEYS = {
+    uid: 'uid',
+    jwt: 'jwt'
 }
