@@ -6,7 +6,11 @@ export const API_URLS = {
 export const ROUTER_URLS = {
     base: '/',
     auth: '/auth',
-    lenta: '/lenta'
+    lenta: '/lenta',
+    user: '/user/:id',
+    addForm: '/add_form',
+    search: '/search',
+    settings: '/settings'
 }
 
 export const LOCAL_STORAGE_KEYS = {

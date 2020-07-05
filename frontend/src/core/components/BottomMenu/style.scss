@@ -1,0 +1,14 @@
+.bottom-menu {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+
+    .menu-item {
+        font-size: 25px;
+        padding: 10px;
+    }
+}

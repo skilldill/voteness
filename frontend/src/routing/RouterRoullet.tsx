@@ -8,7 +8,8 @@ import { FullScreenLoading } from "shared/components";
 import { RootContainer } from "core/components";
 
 export const RouterRoullet = () => {
-    const [goAuth, setGoAuth] = useState(false);
+    const [goRedirect, setGoRedirect] = useState(false);
+    const [redirectPath, setRedirectPath] = useState('');
     const [showLoading, setShowLoading] = useState(true);
     const dispatch = useDispatch();
 
@@ -16,10 +17,15 @@ export const RouterRoullet = () => {
         const jwt = localStorage.getItem(LOCAL_STORAGE_KEYS.jwt);
         const uid = localStorage.getItem(LOCAL_STORAGE_KEYS.uid);
 
-        if (!!jwt && !!uid) {
+        console.log(jwt, uid);
 
+        if (!!jwt && !!uid) {
+            setRedirectPath(ROUTER_URLS.lenta);
+            setGoRedirect(true);
+            setShowLoading(false);
         } else {
-            setGoAuth(true);
+            setRedirectPath(ROUTER_URLS.auth);
+            setGoRedirect(true);
             setShowLoading(false);
         }
     }, [dispatch]);
@@ -29,9 +35,9 @@ export const RouterRoullet = () => {
             <Router>
                 {showLoading && <FullScreenLoading />}
                 <Switch>
-                    {goAuth && (
+                    {goRedirect && (
                         <Route exact path="/">
-                            <Redirect to={ROUTER_URLS.auth} />
+                            <Redirect to={redirectPath} />
                         </Route>
                     )}
                     {routes.map((route, i) =>
