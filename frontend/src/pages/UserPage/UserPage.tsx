@@ -5,7 +5,7 @@ import "./style.scss";
 import { MenusContainer } from "core/components";
 
 export const UserPage = () => {
-    const { id } = useParams();
+    const {id} = useParams();
 
     return (
         <MenusContainer>

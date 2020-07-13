@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { ApiService } from "shared/api";
 import { LOCAL_STORAGE_KEYS, ROUTER_URLS } from "shared/constants";
 import { useHistory } from "react-router-dom";
+import { userActions } from "store/userState/userState.actions"
 
 export const LoginForm = memo(() => {
     const [load, setLoad] = useState(false);
@@ -21,7 +22,6 @@ export const LoginForm = memo(() => {
             try {
                 const response = await ApiService.login(login, password);
                 const {jwt, user} = response.data;
-
                 // SAVE AUTH DATA
                 localStorage.setItem(LOCAL_STORAGE_KEYS.jwt, jwt);
                 localStorage.setItem(LOCAL_STORAGE_KEYS.uid, user.id);

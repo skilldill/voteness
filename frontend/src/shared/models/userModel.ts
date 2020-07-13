@@ -3,3 +3,11 @@ export interface User {
     username: string,
     email: string
 }
+
+export interface UserInfo {
+    id: string,
+    name?: string,
+    surname?: string,
+    description?: string,
+    avatar?: any
+}

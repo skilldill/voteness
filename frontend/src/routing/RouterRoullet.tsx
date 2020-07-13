@@ -6,6 +6,7 @@ import { routes } from "./routes";
 import { ROUTER_URLS, LOCAL_STORAGE_KEYS } from "shared/constants";
 import { FullScreenLoading } from "shared/components";
 import { RootContainer } from "core/components";
+import { updateHttpClient } from "shared/api/httpClient";
 
 export const RouterRoullet = () => {
     const [goRedirect, setGoRedirect] = useState(false);
@@ -17,12 +18,13 @@ export const RouterRoullet = () => {
         const jwt = localStorage.getItem(LOCAL_STORAGE_KEYS.jwt);
         const uid = localStorage.getItem(LOCAL_STORAGE_KEYS.uid);
 
-        console.log(jwt, uid);
-
         if (!!jwt && !!uid) {
             setRedirectPath(ROUTER_URLS.lenta);
             setGoRedirect(true);
             setShowLoading(false);
+
+            //UPDATE JWT
+            updateHttpClient({ Authorization: `Bearer ${jwt}` });
         } else {
             setRedirectPath(ROUTER_URLS.auth);
             setGoRedirect(true);

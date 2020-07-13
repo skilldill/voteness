@@ -13,7 +13,7 @@ export const userActions = {
     fetchUser: (login: string, password: string) => async (dispatch: Dispatch) => {
         try {
             const response = await ApiService.login(login, password);
-            console.log(response.data);
+            dispatch(userActions.setUser(response.data));
         } catch (error) {
             console.log(error.message);
         }
